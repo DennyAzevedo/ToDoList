@@ -1,7 +1,11 @@
 <template>
   <ul class="todo-list">
-    <li v-for="todo in sortedTasks" class="todo">
+    <li
+      v-for="todo in sortedTasks"
+      class="todo"
+    >
       <div class="view">
+        <input class="toggle" type="checkbox">
         <label>{{ todo.title }}</label>
       </div>
     </li>
@@ -66,6 +70,7 @@
 
 .todo-list li .toggle {
 	text-align: center;
+  z-index: 99;
 	width: 40px;
 	/* auto, since non-WebKit browsers doesn't support input styling */
 	height: auto;
@@ -79,11 +84,11 @@
 }
 
 .todo-list li .toggle:after {
-	content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#ededed" stroke-width="3"/></svg>');
+  content: url('../assets/circle.svg');
 }
 
 .todo-list li .toggle:checked:after {
-	content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#bddad5" stroke-width="3"/><path fill="#5dc2af" d="M72 25L42 71 27 56l-4 4 20 20 34-52z"/></svg>');
+  content: url('../assets/check_circle.svg')
 }
 
 .todo-list li label {
