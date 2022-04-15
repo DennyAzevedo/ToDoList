@@ -5,8 +5,14 @@
       class="todo"
     >
       <div class="view">
-        <input class="toggle" type="checkbox">
-        <label>{{ todo.title }}</label>
+        <input
+          class="toggle"
+          @click="completeTask(todo)"
+          type="checkbox"
+        >
+        <label :class="{ 'todo-completed': todo.completed }" >
+          {{ todo.title }}
+        </label>
       </div>
     </li>
   </ul>
@@ -23,9 +29,11 @@
           if (a.title > b.title) return 1
           return 0
         })
-      },
-      set: function (novaLista) {
-        this.todoList.concat(novaLista)
+      }
+    },
+    methods: {
+      completeTask (task) {
+        task.completed = !task.completed
       }
     }
   }
